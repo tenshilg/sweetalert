@@ -3,8 +3,6 @@
 // github.com/t4t5/sweetalert
 
 .sweet-overlay {
-	background-color: rgb(0, 0, 0); /* IE8 */
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)"; /* IE8 */
 	background-color: rgba(black, 0.4);
 
 	position: fixed;
@@ -14,7 +12,7 @@
 	bottom: 0;
 
 	display: none;
-	z-index: 10000;
+	z-index: 1000;
 }
 
 .sweet-alert {
@@ -22,7 +20,7 @@
 	$padding: 17px;
 
 	background-color: white;
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Verdana', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	width: $width;
 	padding: $padding;
 	border-radius: 5px;
@@ -36,7 +34,7 @@
 
 	overflow: hidden;
 	display: none;
-	z-index: 99999;
+	z-index: 2000;
 
 	@media all and (max-width: 540px) {
 		width: auto;
@@ -49,12 +47,12 @@
 
 	h2 {
 		color: #575757;
-		font-size: 30px;
+		font-size: 24px;
 		text-align: center;
-		font-weight: 600;
+		font-weight: 300;
 		text-transform: none;
 		position: relative;
-		margin: 25px 0;
+		margin: 15px 0;
 		padding: 0;
 		line-height: 40px;
 		display: block;
@@ -63,14 +61,23 @@
 	p {
 		color: #797979;
 		font-size: 16px;
-		text-align: center;
 		font-weight: 300;
 		position: relative;
-		text-align: inherit;
+		text-align: left;
 		float: none;
 		margin: 0;
 		padding: 0;
+		padding-left: 9px;
 		line-height: normal;
+	}
+
+	.social-buttons {
+		margin-top: 15px;
+
+		img {
+			width: 24px;
+			margin-left: 10px;
+		}
 	}
 
 	button {
@@ -83,10 +90,9 @@
 		box-shadow: none;
 		font-size: 17px;
 		font-weight: 500;
-		-webkit-border-radius: 4px;
 		border-radius: 5px;
 		padding: 10px 32px;
-		margin: 26px 5px 0 5px;
+		margin: 16px 5px 0 5px;
 		cursor: pointer;
 		&:focus {
 			outline: none;
@@ -122,11 +128,8 @@
 		box-shadow: none !important;
 	}
 
-	&[data-has-confirm-button=false][data-has-cancel-button=false] {
-		padding-bottom: 40px;
-	}
 
-	.sa-icon {
+	.icon {
 		$red: 		#F27474;
 		$orange: 	#F8BB86;
 		$blue: 		#C9DAE1;
@@ -135,23 +138,21 @@
 		width: 80px;
 		height: 80px;
 		border: 4px solid gray;
-		-webkit-border-radius: 40px;
-		border-radius: 40px;
 		border-radius: 50%;
 		margin: 20px auto;
 		padding: 0;
 		position: relative;
 		box-sizing: content-box;
 
-		&.sa-error {
+		&.error {
 			border-color: $red;
 
-			.sa-x-mark {
+			.x-mark {
 				position: relative;
 				display: block;
 			}
 
-			.sa-line {
+			.line {
 				position: absolute;
 				height: 5px;
 				width: 47px;
@@ -160,37 +161,35 @@
 				top: 37px;
 				border-radius: 2px;
 
-				&.sa-left {
+				&.left {
 					-webkit-transform: rotate(45deg);
     			transform: rotate(45deg);
     			left: 17px;
 				}
-				&.sa-right {
+				&.right {
 					-webkit-transform: rotate(-45deg);
     			transform: rotate(-45deg);
     			right: 16px;
 				}
 			}
 		}
-		&.sa-warning {
+		&.warning {
 			border-color: $orange;
 
-			.sa-body { // Exclamation mark body
+			.body { // Exclamation mark body
 				position: absolute;
 				width: 5px;
 				height: 47px;
 				left: 50%;
 				top: 10px;
-				-webkit-border-radius: 2px;
 				border-radius: 2px;
 				margin-left: -2px;
 				background-color: $orange;
 			}
-			.sa-dot { // Exclamation mark dot
+			.dot { // Exclamation mark dot
 				position: absolute;
 				width: 7px;
 				height: 7px;
-				-webkit-border-radius: 50%;
 				border-radius: 50%;
 				margin-left: -3px;
 				left: 50%;
@@ -198,7 +197,7 @@
 				background-color: $orange;
 			}
 		}
-		&.sa-info {
+		&.info {
 			border-color: $blue;
 
 			&::before { // i-letter body
@@ -223,13 +222,11 @@
 				background-color: $blue;
 			}
 		}
-		&.sa-success {
+		&.success {
 			border-color: $green;
 
 			&::before, &::after { // Emulate moving circular line
 				content: '';
-				-webkit-border-radius: 40px;
-				border-radius: 40px;
 				border-radius: 50%;
 			  position: absolute;
 			  width: 60px;
@@ -239,7 +236,6 @@
 			  transform: rotate(45deg);
 			}
 			&::before {
-				-webkit-border-radius: 120px 0 0 120px;
 			  border-radius: 120px 0 0 120px;
 			  top: -7px;
 				left: -33px;
@@ -250,7 +246,6 @@
 			  transform-origin: 60px 60px;
 			}
 			&::after {
-				-webkit-border-radius: 0 120px 120px 0;
 			  border-radius: 0 120px 120px 0;
 			  top: -11px;
 				left: 30px;
@@ -261,12 +256,10 @@
 			  transform-origin: 0px 60px;
 			}
 
-			.sa-placeholder { // Ring
+			.placeholder { // Ring
 				width: 80px;
 				height: 80px;
 				border: 4px solid rgba($green, 0.2);
-				-webkit-border-radius: 40px;
-				border-radius: 40px;
 				border-radius: 50%;
 				box-sizing: content-box;
 
@@ -276,7 +269,7 @@
 				z-index: 2;
 			}
 
-			.sa-fix {	// Hide corners left from animation
+			.fix {	// Hide corners left from animation
 				width: 5px;
 				height: 90px;
 				background-color: white;
@@ -290,7 +283,7 @@
 				transform: rotate(-45deg);
 			}
 
-			.sa-line {
+			.line {
 				height: 5px;
 				background-color: $green;
 				display: block;
@@ -299,7 +292,7 @@
 				position: absolute;
 				z-index: 2;
 
-				&.sa-tip {
+				&.tip {
 					width: 25px;
 
     			left: 14px;
@@ -308,7 +301,7 @@
 					-webkit-transform: rotate(45deg);
     			transform: rotate(45deg);
 				}
-				&.sa-long {
+				&.long {
 					width: 47px;
 
     			right: 8px;
@@ -319,7 +312,7 @@
 				}
 			}
 		}
-		&.sa-custom {
+		&.custom {
 			background-size: contain;
 			border-radius: 0;
 			border: none;
@@ -338,12 +331,16 @@
   @-webkit-keyframes #{$animation-name} {
     @content;
   }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
   @keyframes #{$animation-name} {
     @content;
   }
 }
 @mixin animation($str) {
   -webkit-animation: #{$str};
+  -moz-animation: #{$str};
   animation: #{$str};
 }
 
@@ -363,17 +360,9 @@
 
 .showSweetAlert {
   @include animation('showSweetAlert 0.3s');
-
-  &[data-animation=none] {
-		@include animation('none');
-	}
 }
 .hideSweetAlert {
   @include animation('hideSweetAlert 0.2s');
-
-  &[data-animation=none] {
-		@include animation('none');
-	}
 }
 
 
@@ -406,7 +395,7 @@
 .animateSuccessLong {
 	@include animation('animateSuccessLong 0.75s');
 }
-.sa-icon.sa-success.animate::after {
+.icon.success.animate::after {
 	@include animation('rotatePlaceholder 4.25s ease-in');
 }
 
